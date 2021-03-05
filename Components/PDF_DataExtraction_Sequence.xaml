@@ -1,0 +1,418 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="PDF_DataExtraction_Sequence" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/intelligentocr/classification" xmlns:p2="http://schemas.uipath.com/workflow/activities/document-processing-contracts/classification" xmlns:p3="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:p4="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:p5="http://schemas.uipath.com/workflow/activities/intelligentocr/extraction" xmlns:p6="http://schemas.uipath.com/workflow/activities/documentunderstanding-ml" xmlns:p7="http://schemas.uipath.com/workflow/activities/document-processing-contracts/extraction" xmlns:p8="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing" xmlns:sd1="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uoa="clr-namespace:UiPath.OmniPage.Activities;assembly=UiPath.OmniPage.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1410.4,2744</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>PDF_DataExtraction_Sequence_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="94">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Taxonomy</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.TaxonomyManagement</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Dom</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.Digitization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.OmniPage.Activities</x:String>
+      <x:String>UiPath.OCR.Contracts.Activities</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Results</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Classification</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.DocumentClassification</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Training</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.Training</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.DataExtraction</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.DataExtraction</x:String>
+      <x:String>UiPath.DocumentUnderstanding.ML.Activities</x:String>
+      <x:String>UiPath.DocumentUnderstanding.ML.Activities.Editors</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="37">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.OmniPage.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentProcessing.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OmniPage.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="PDF_DataExtraction_Sequence" sap:VirtualizedContainerService.HintSize="727.2,2539.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="p8:DocumentTaxonomy" Name="Taxonomy" />
+      <Variable x:TypeArguments="x:String" Name="FilePath" />
+      <Variable x:TypeArguments="x:String" Name="DOC_Text" />
+      <Variable x:TypeArguments="p3:Document" Name="DOM" />
+      <Variable x:TypeArguments="p4:ClassificationResult[]" Name="ClassificationResults" />
+      <Variable x:TypeArguments="x:Boolean" Name="Started" />
+      <Variable x:TypeArguments="sd1:DataSet" Name="FinalRes_DataSet" />
+      <Variable x:TypeArguments="p4:ExtractionResult" Name="AutoExtractionResults" />
+      <Variable x:TypeArguments="sd1:DataTable" Name="HostDataTable" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign sap:VirtualizedContainerService.HintSize="685.6,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[FilePath]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("PDF_Path").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="685.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Processing - &quot; + FilePath]" />
+    <p:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="685.6,105.6" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[Taxonomy]" />
+    <p:DigitizeDocument DegreeOfParallelism="-1" DisplayName="Digitize Document" DocumentObjectModel="[DOM]" DocumentPath="[FilePath]" DocumentText="[DOC_Text]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="685.6,68.8" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
+      <p:DigitizeDocument.OCREngine>
+        <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+          <ActivityFunc.Argument>
+            <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+          </ActivityFunc.Argument>
+          <uoa:OmniPageOCR Language="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" Text="{x:Null}" BundleType="Basic" ComputeSkewAngle="False" DisplayName="OmniPage OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="312,22.4" sap2010:WorkflowViewState.IdRef="OmniPageOCR_1" Image="[Image]" />
+        </ActivityFunc>
+      </p:DigitizeDocument.OCREngine>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </p:DigitizeDocument>
+    <p1:ClassifyDocumentScope ClassificationResults="[ClassificationResults]" DisplayName="Classify Document Scope" DocumentObjectModel="[DOM]" DocumentPath="[FilePath]" DocumentText="[DOC_Text]" sap:VirtualizedContainerService.HintSize="685.6,68.8" sap2010:WorkflowViewState.IdRef="ClassifyDocumentScope_1" Taxonomy="[Taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UI4bfc5c32d9c444399c73717c0d91359a&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;HildunGroup.AccountsPayable.Invoice&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Invoice&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceTasha&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;HildunGroup.AccountsPayable.Seafolly&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;HildunGroup.AccountsPayable.Rails&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Rails&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZAC01&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true}}},&quot;UIc6c64f0d292c4b7a8c68a7939308cc53&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;HildunGroup.AccountsPayable.Invoice&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Invoice&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceTasha&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:false},&quot;HildunGroup.AccountsPayable.Seafolly&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:false},&quot;HildunGroup.AccountsPayable.Rails&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Rails&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZAC01&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:false}}}},&quot;ClassifierMinimumConfidence&quot;:{&quot;UI4bfc5c32d9c444399c73717c0d91359a&quot;:&quot;0&quot;,&quot;UIc6c64f0d292c4b7a8c68a7939308cc53&quot;:&quot;0&quot;},&quot;DocumentTypesByPersistenceId&quot;:{}}">
+      <p1:ClassifyDocumentScope.Classifiers>
+        <p1:IntelligentKeywordClassifier LearningData="{x:Null}" ApiKey="[in_config(&quot;IKC_APIKey&quot;).ToString]" DisplayName="Intelligent Keyword Classifier" Endpoint="[in_config(&quot;IKC_EndPoint&quot;).ToString]" sap:VirtualizedContainerService.HintSize="233.6,212.8" sap2010:WorkflowViewState.IdRef="IntelligentKeywordClassifier_1" LearningFilePath="[in_config(&quot;IKC_FilePath&quot;).ToString]" PersistenceId="UI4bfc5c32d9c444399c73717c0d91359a">
+          <p1:IntelligentKeywordClassifier.ClassifierResult>
+            <OutArgument x:TypeArguments="p2:ClassifierResult">
+              <DelegateArgumentReference x:TypeArguments="p2:ClassifierResult">
+                <DelegateOutArgument x:TypeArguments="p2:ClassifierResult" Name="ClassificationResult" />
+              </DelegateArgumentReference>
+            </OutArgument>
+          </p1:IntelligentKeywordClassifier.ClassifierResult>
+          <p1:IntelligentKeywordClassifier.DocumentObjectModel>
+            <InArgument x:TypeArguments="p3:Document">
+              <DelegateArgumentValue x:TypeArguments="p3:Document">
+                <DelegateInArgument x:TypeArguments="p3:Document" Name="DocumentObjectModel" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p1:IntelligentKeywordClassifier.DocumentObjectModel>
+          <p1:IntelligentKeywordClassifier.DocumentPath>
+            <InArgument x:TypeArguments="x:String">
+              <DelegateArgumentValue x:TypeArguments="x:String">
+                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p1:IntelligentKeywordClassifier.DocumentPath>
+          <p1:IntelligentKeywordClassifier.DocumentText>
+            <InArgument x:TypeArguments="x:String">
+              <DelegateArgumentValue x:TypeArguments="x:String">
+                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p1:IntelligentKeywordClassifier.DocumentText>
+          <p1:IntelligentKeywordClassifier.DocumentTypes>
+            <InArgument x:TypeArguments="p2:ClassifierDocumentType[]">
+              <DelegateArgumentValue x:TypeArguments="p2:ClassifierDocumentType[]">
+                <DelegateInArgument x:TypeArguments="p2:ClassifierDocumentType[]" Name="DocumentTypes" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p1:IntelligentKeywordClassifier.DocumentTypes>
+        </p1:IntelligentKeywordClassifier>
+        <p1:KeywordBasedClassifier HumanValidatedData="{x:Null}" LearningData="{x:Null}" DisplayName="Keyword Based Classifier" sap:VirtualizedContainerService.HintSize="233.6,212.8" sap2010:WorkflowViewState.IdRef="KeywordBasedClassifier_1" LearningFilePath="[in_config(&quot;KBC_FilePath&quot;).ToString]" PersistenceId="UIc6c64f0d292c4b7a8c68a7939308cc53">
+          <p1:KeywordBasedClassifier.ClassifierResult>
+            <OutArgument x:TypeArguments="p2:ClassifierResult">
+              <DelegateArgumentReference x:TypeArguments="p2:ClassifierResult">
+                <DelegateOutArgument x:TypeArguments="p2:ClassifierResult" Name="ClassificationResult" />
+              </DelegateArgumentReference>
+            </OutArgument>
+          </p1:KeywordBasedClassifier.ClassifierResult>
+          <p1:KeywordBasedClassifier.DocumentObjectModel>
+            <InArgument x:TypeArguments="p3:Document">
+              <DelegateArgumentValue x:TypeArguments="p3:Document">
+                <DelegateInArgument x:TypeArguments="p3:Document" Name="DocumentObjectModel" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p1:KeywordBasedClassifier.DocumentObjectModel>
+          <p1:KeywordBasedClassifier.DocumentPath>
+            <InArgument x:TypeArguments="x:String">
+              <DelegateArgumentValue x:TypeArguments="x:String">
+                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p1:KeywordBasedClassifier.DocumentPath>
+          <p1:KeywordBasedClassifier.DocumentText>
+            <InArgument x:TypeArguments="x:String">
+              <DelegateArgumentValue x:TypeArguments="x:String">
+                <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p1:KeywordBasedClassifier.DocumentText>
+          <p1:KeywordBasedClassifier.DocumentTypes>
+            <InArgument x:TypeArguments="p2:ClassifierDocumentType[]">
+              <DelegateArgumentValue x:TypeArguments="p2:ClassifierDocumentType[]">
+                <DelegateInArgument x:TypeArguments="p2:ClassifierDocumentType[]" Name="DocumentTypes" />
+              </DelegateArgumentValue>
+            </InArgument>
+          </p1:KeywordBasedClassifier.DocumentTypes>
+        </p1:KeywordBasedClassifier>
+      </p1:ClassifyDocumentScope.Classifiers>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </p1:ClassifyDocumentScope>
+    <ui:ForEach x:TypeArguments="p4:ClassificationResult" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="685.6,1850.4" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[ClassificationResults]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="p4:ClassificationResult">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="p4:ClassificationResult" Name="Res" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="650.4,1716" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <p5:DataExtractionScope DocumentTypeId="{x:Null}" ClassificationResult="[Res]" DisplayName="Data Extraction Scope" DocumentObjectModel="[DOM]" DocumentPath="[FilePath]" DocumentText="[DOC_Text]" ExtractionResult="[AutoExtractionResults]" FormatValuesIfPossible="True" sap:VirtualizedContainerService.HintSize="608.8,521.6" sap2010:WorkflowViewState.IdRef="DataExtractionScope_1" Taxonomy="[Taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UIa41e8f197c5941b2ad64c2f2d427694b&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;HildunGroup.AccountsPayable.Invoice&quot;:{&quot;FieldMappings&quot;:{&quot;HildunGroup.AccountsPayable.Invoice.CompanyName&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Invoice.CompanyName&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;name\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Invoice.CompanyAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Invoice.CompanyAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;vendor-addr\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Invoice.InvoiceNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Invoice.InvoiceNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;invoice-no\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Invoice.InvoiceDate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Invoice.InvoiceDate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;date\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Invoice.BillTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Invoice.BillTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;billing-addr\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Invoice.ShipTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Invoice.ShipTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;shipping-addr\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Invoice.Total&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Invoice.Total&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;total\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Invoice.Balance&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Invoice.Balance&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;net-amount\&quot;&quot;,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:&quot;\&quot;\&quot;&quot;},&quot;HildunGroup.AccountsPayable.InvoiceTasha&quot;:{&quot;FieldMappings&quot;:{&quot;HildunGroup.AccountsPayable.InvoiceTasha.CompanyName&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha.CompanyName&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;name\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceTasha.CompanyAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha.CompanyAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;vendor-addr\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceTasha.InvoiceNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha.InvoiceNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;invoice-no\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceTasha.InvoiceDate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha.InvoiceDate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;date\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceTasha.BillTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha.BillTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;billing-addr\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceTasha.ShipTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha.ShipTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;shipping-addr\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceTasha.Total&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha.Total&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;total\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceTasha.Balance&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha.Balance&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;net-amount\&quot;&quot;,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:&quot;\&quot;\&quot;&quot;},&quot;HildunGroup.AccountsPayable.Seafolly&quot;:{&quot;FieldMappings&quot;:{&quot;HildunGroup.AccountsPayable.Seafolly.CompanyName&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly.CompanyName&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;name\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Seafolly.CompanyAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly.CompanyAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;vendor-addr\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Seafolly.InvoiceNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly.InvoiceNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;invoice-no\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Seafolly.InvoiceDate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly.InvoiceDate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;date\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Seafolly.BillTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly.BillTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;billing-addr\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Seafolly.ShipTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly.ShipTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;shipping-addr\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Seafolly.Total&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly.Total&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;total\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Seafolly.Balance&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly.Balance&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;net-amount\&quot;&quot;,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:&quot;\&quot;\&quot;&quot;},&quot;HildunGroup.AccountsPayable.Rails&quot;:{&quot;FieldMappings&quot;:{&quot;HildunGroup.AccountsPayable.Rails.CompanyName&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Rails.CompanyName&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Rails.CompanyAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Rails.CompanyAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Rails.InvoiceNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Rails.InvoiceNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Rails.InvoiceDate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Rails.InvoiceDate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Rails.BillTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Rails.BillTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Rails.ShipTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Rails.ShipTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Rails.Total&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Rails.Total&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Rails.Balance&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Rails.Balance&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false}},&quot;ExtractorDocumentTypeId&quot;:&quot;\&quot;\&quot;&quot;},&quot;HildunGroup.AccountsPayable.InvoiceZAC01&quot;:{&quot;FieldMappings&quot;:{&quot;HildunGroup.AccountsPayable.InvoiceZAC01.CompanyName&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01.CompanyName&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZAC01.CompanyAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01.CompanyAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZAC01.InvoiceNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01.InvoiceNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZAC01.InvoiceDate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01.InvoiceDate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZAC01.BillTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01.BillTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZAC01.ShipTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01.ShipTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZAC01.Total&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01.Total&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZAC01.Balance&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01.Balance&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false}},&quot;ExtractorDocumentTypeId&quot;:&quot;\&quot;\&quot;&quot;},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE&quot;:{&quot;FieldMappings&quot;:{&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.CompanyName&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.CompanyName&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;name\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.CompanyAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.CompanyAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;vendor-addr\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.InvoiceNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.InvoiceNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;invoice-no\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.InvoiceDate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.InvoiceDate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;date\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.BillTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.BillTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;billing-addr\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.ShipTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.ShipTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;shipping-addr\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.Total&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.Total&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;total\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.Balance&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.Balance&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;net-amount\&quot;&quot;,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:&quot;\&quot;\&quot;&quot;}}},&quot;UIa9f52e180d504ff9b1f04e9d949097e3&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;HildunGroup.AccountsPayable.Invoice&quot;:{&quot;FieldMappings&quot;:{&quot;HildunGroup.AccountsPayable.Invoice.CompanyName&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Invoice.CompanyName&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Invoice.CompanyAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Invoice.CompanyAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Invoice.InvoiceNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Invoice.InvoiceNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Invoice.InvoiceDate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Invoice.InvoiceDate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Invoice.BillTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Invoice.BillTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Invoice.ShipTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Invoice.ShipTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Invoice.Total&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Invoice.Total&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Invoice.Balance&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Invoice.Balance&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false}},&quot;ExtractorDocumentTypeId&quot;:null},&quot;HildunGroup.AccountsPayable.InvoiceTasha&quot;:{&quot;FieldMappings&quot;:{&quot;HildunGroup.AccountsPayable.InvoiceTasha.CompanyName&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha.CompanyName&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceTasha.CompanyAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha.CompanyAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceTasha.InvoiceNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha.InvoiceNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceTasha.InvoiceDate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha.InvoiceDate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceTasha.BillTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha.BillTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceTasha.ShipTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha.ShipTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceTasha.Total&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha.Total&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceTasha.Balance&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha.Balance&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false}},&quot;ExtractorDocumentTypeId&quot;:null},&quot;HildunGroup.AccountsPayable.Seafolly&quot;:{&quot;FieldMappings&quot;:{&quot;HildunGroup.AccountsPayable.Seafolly.CompanyName&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly.CompanyName&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Seafolly.CompanyAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly.CompanyAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Seafolly.InvoiceNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly.InvoiceNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Seafolly.InvoiceDate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly.InvoiceDate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Seafolly.BillTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly.BillTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Seafolly.ShipTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly.ShipTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Seafolly.Total&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly.Total&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.Seafolly.Balance&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly.Balance&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false}},&quot;ExtractorDocumentTypeId&quot;:null},&quot;HildunGroup.AccountsPayable.Rails&quot;:{&quot;FieldMappings&quot;:{&quot;HildunGroup.AccountsPayable.Rails.CompanyName&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Rails.CompanyName&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Rails.CompanyAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Rails.CompanyAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Rails.InvoiceNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Rails.InvoiceNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Rails.InvoiceDate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Rails.InvoiceDate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Rails.BillTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Rails.BillTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Rails.ShipTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Rails.ShipTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Rails.Total&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Rails.Total&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.Rails.Balance&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.Rails.Balance&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null},&quot;HildunGroup.AccountsPayable.InvoiceZAC01&quot;:{&quot;FieldMappings&quot;:{&quot;HildunGroup.AccountsPayable.InvoiceZAC01.CompanyName&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01.CompanyName&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZAC01.CompanyAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01.CompanyAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZAC01.InvoiceNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01.InvoiceNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZAC01.InvoiceDate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01.InvoiceDate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZAC01.BillTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01.BillTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZAC01.ShipTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01.ShipTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZAC01.Total&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01.Total&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZAC01.Balance&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01.Balance&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE&quot;:{&quot;FieldMappings&quot;:{&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.CompanyName&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.CompanyName&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.CompanyAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.CompanyAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.InvoiceNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.InvoiceNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.InvoiceDate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.InvoiceDate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.BillTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.BillTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.ShipTo&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.ShipTo&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.Total&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.Total&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.Balance&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.Balance&quot;,&quot;ExtractorTaxonomyFieldId&quot;:null,&quot;ShouldExtract&quot;:false}},&quot;ExtractorDocumentTypeId&quot;:null}}}},&quot;ExtractorMinimumConfidence&quot;:{&quot;UIa9f52e180d504ff9b1f04e9d949097e3&quot;:&quot;0&quot;,&quot;UIa41e8f197c5941b2ad64c2f2d427694b&quot;:&quot;0&quot;},&quot;ExtractorsAliases&quot;:{},&quot;DocumentTypeOptionsByExtractor&quot;:{&quot;UIa41e8f197c5941b2ad64c2f2d427694b&quot;:[{&quot;FieldId&quot;:&quot;&quot;,&quot;SubOptions&quot;:[{&quot;FieldId&quot;:&quot;name&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;vendor-addr&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;billing-name&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;billing-addr&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;shipping-addr&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;invoice-no&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;po-no&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;vendor-vat-no&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;date&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;tax&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;total&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;payment-terms&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;net-amount&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;due-date&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;discount&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;shipping-charges&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;payment-addr&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;billing-vat-no&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;currency&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;items&quot;,&quot;SubOptions&quot;:[{&quot;FieldId&quot;:&quot;description&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;quantity&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;unit-price&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;line-amount&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;item-po-no&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;line-no&quot;,&quot;SubOptions&quot;:null},{&quot;FieldId&quot;:&quot;part-no&quot;,&quot;SubOptions&quot;:null}]}]}],&quot;UIa9f52e180d504ff9b1f04e9d949097e3&quot;:[]}}">
+              <p5:DataExtractionScope.Extractors>
+                <p6:MachineLearningExtractor SelectedMLSkill="{x:Null}" ApiKey="[in_config(&quot;MLE_APIKey&quot;).ToString]" Configuration="{}{&quot;Endpoint&quot;:&quot;https://du.uipath.com/ie/invoices?edition=enterprise&quot;,&quot;ApiKey&quot;:&quot;UmWF75VYDIB+ZQqyrHGx/xWCxelxM9fkdDuusuaP9rZymgZu17Pj6G+iOPosC+KPVUzb5Fx031zp4B3XOovn5Q==&quot;,&quot;AvailableMLSkills&quot;:[]}" DisplayName="Machine Learning Extractor" Endpoint="[in_config(&quot;MLE_EndPoint&quot;).ToString]" sap:VirtualizedContainerService.HintSize="233.6,195.2" sap2010:WorkflowViewState.IdRef="MachineLearningExtractor_1" PersistenceId="UIa41e8f197c5941b2ad64c2f2d427694b" RetryOnFailure="True" Timeout="100000" UseServerSideOCR="False">
+                  <p6:MachineLearningExtractor.AvailableMLSkills>
+                    <sc:BindingList x:TypeArguments="x:String" AllowEdit="True" AllowNew="False" AllowRemove="True" RaiseListChangedEvents="True" />
+                  </p6:MachineLearningExtractor.AvailableMLSkills>
+                  <p6:MachineLearningExtractor.DocumentBounds>
+                    <InArgument x:TypeArguments="p4:ResultsDocumentBounds">
+                      <DelegateArgumentValue x:TypeArguments="p4:ResultsDocumentBounds">
+                        <DelegateInArgument x:TypeArguments="p4:ResultsDocumentBounds" Name="DocumentBounds" />
+                      </DelegateArgumentValue>
+                    </InArgument>
+                  </p6:MachineLearningExtractor.DocumentBounds>
+                  <p6:MachineLearningExtractor.DocumentObjectModel>
+                    <InArgument x:TypeArguments="p3:Document">
+                      <DelegateArgumentValue x:TypeArguments="p3:Document">
+                        <DelegateInArgument x:TypeArguments="p3:Document" Name="DocumentObjectModel" />
+                      </DelegateArgumentValue>
+                    </InArgument>
+                  </p6:MachineLearningExtractor.DocumentObjectModel>
+                  <p6:MachineLearningExtractor.DocumentPath>
+                    <InArgument x:TypeArguments="x:String">
+                      <DelegateArgumentValue x:TypeArguments="x:String">
+                        <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+                      </DelegateArgumentValue>
+                    </InArgument>
+                  </p6:MachineLearningExtractor.DocumentPath>
+                  <p6:MachineLearningExtractor.DocumentText>
+                    <InArgument x:TypeArguments="x:String">
+                      <DelegateArgumentValue x:TypeArguments="x:String">
+                        <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+                      </DelegateArgumentValue>
+                    </InArgument>
+                  </p6:MachineLearningExtractor.DocumentText>
+                  <p6:MachineLearningExtractor.ExtractorDocumentType>
+                    <InArgument x:TypeArguments="p7:ExtractorDocumentType">
+                      <DelegateArgumentValue x:TypeArguments="p7:ExtractorDocumentType">
+                        <DelegateInArgument x:TypeArguments="p7:ExtractorDocumentType" Name="ExtractorDocumentType" />
+                      </DelegateArgumentValue>
+                    </InArgument>
+                  </p6:MachineLearningExtractor.ExtractorDocumentType>
+                  <p6:MachineLearningExtractor.ExtractorResult>
+                    <OutArgument x:TypeArguments="p7:ExtractorResult">
+                      <DelegateArgumentReference x:TypeArguments="p7:ExtractorResult">
+                        <DelegateOutArgument x:TypeArguments="p7:ExtractorResult" Name="ExtractorResult" />
+                      </DelegateArgumentReference>
+                    </OutArgument>
+                  </p6:MachineLearningExtractor.ExtractorResult>
+                </p6:MachineLearningExtractor>
+                <p5:FormExtractor SerializedSignatureFields="{x:Null}" ApiKey="[in_config(&quot;FE_APIKey&quot;).ToString]" DisplayName="Form Extractor" Endpoint="[in_config(&quot;FE_EndPoint&quot;).ToString]" sap:VirtualizedContainerService.HintSize="233.6,195.2" sap2010:WorkflowViewState.IdRef="FormExtractor_1" MinOverlapPercentage="65" PersistenceId="UIa9f52e180d504ff9b1f04e9d949097e3" SerializedSettings="{}{&quot;DocTypeSettings&quot;:[]}" SerializedTemplates="[{&quot;DocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha&quot;,&quot;FormId&quot;:&quot;881e6c00&quot;,&quot;FormName&quot;:&quot;Tasha&quot;,&quot;OriginalFileExtension&quot;:&quot;pdf&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,612.0,792.0],&quot;SkewAngle&quot;:0.0396,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;Invoice&quot;,&quot;Box&quot;:[24.504,250.9896,60.9672,10.1232]},{&quot;Text&quot;:&quot;Page&quot;,&quot;Box&quot;:[33.7176,501.5568,21.3648,8.8968]},{&quot;Text&quot;:&quot;1&quot;,&quot;Box&quot;:[33.9432,539.9568,3.6048,6.9624]},{&quot;Text&quot;:&quot;Sold&quot;,&quot;Box&quot;:[147.5616,36.7536,18.9648,6.972]},{&quot;Text&quot;:&quot;Ship&quot;,&quot;Box&quot;:[148.0656,349.716,19.2048,8.892]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha.InvoiceNumber&quot;,&quot;Box&quot;:[22.8878,316.4488,55.7268,16.9171]},{&quot;Field&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha.InvoiceDate&quot;,&quot;Box&quot;:[724.4488,106.478,47.7659,11.9415]}],&quot;Tables&quot;:[]}]},{&quot;DocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Rails&quot;,&quot;FormId&quot;:&quot;c0f5e9c2&quot;,&quot;FormName&quot;:&quot;Rails-3Page&quot;,&quot;OriginalFileExtension&quot;:&quot;pdf&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,612.0,792.0],&quot;SkewAngle&quot;:-0.1203,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;Ship&quot;,&quot;Box&quot;:[277.2391,62.7433,16.8501,7.9738]},{&quot;Text&quot;:&quot;B.O.L.&quot;,&quot;Box&quot;:[274.3503,172.6755,23.0825,6.7842]},{&quot;Text&quot;:&quot;Contact&quot;,&quot;Box&quot;:[274.5679,276.3554,29.5626,6.8001]},{&quot;Text&quot;:&quot;Phone&quot;,&quot;Box&quot;:[274.7446,361.5555,23.3225,6.79]},{&quot;Text&quot;:&quot;I&quot;,&quot;Box&quot;:[765.5089,571.2468,3.4006,6.2614]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;HildunGroup.AccountsPayable.Rails.CompanyName&quot;,&quot;Box&quot;:[87.5707,54.7317,140.3122,14.9268]},{&quot;Field&quot;:&quot;HildunGroup.AccountsPayable.Rails.CompanyAddress&quot;,&quot;Box&quot;:[99.5122,41.7951,212.9561,46.7707]},{&quot;Field&quot;:&quot;HildunGroup.AccountsPayable.Rails.InvoiceNumber&quot;,&quot;Box&quot;:[39.8049,486.6146,58.7122,14.9268]},{&quot;Field&quot;:&quot;HildunGroup.AccountsPayable.Rails.InvoiceDate&quot;,&quot;Box&quot;:[112.4488,489.6,49.7561,7.961]},{&quot;Field&quot;:&quot;HildunGroup.AccountsPayable.Rails.BillTo&quot;,&quot;Box&quot;:[173.1512,46.7707,155.239,61.6976]},{&quot;Field&quot;:&quot;HildunGroup.AccountsPayable.Rails.ShipTo&quot;,&quot;Box&quot;:[192.0585,337.3463,154.2439,53.7366]}],&quot;Tables&quot;:[]},{&quot;Page&quot;:1,&quot;Size&quot;:[0.0,0.0,612.0,792.0],&quot;SkewAngle&quot;:-0.1772,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;Ship&quot;,&quot;Box&quot;:[275.9702,62.6971,16.8731,7.9988]},{&quot;Text&quot;:&quot;B.O.L.&quot;,&quot;Box&quot;:[272.9518,172.3928,23.3433,6.8163]},{&quot;Text&quot;:&quot;Contact&quot;,&quot;Box&quot;:[273.2725,276.3127,29.5832,6.8375]},{&quot;Text&quot;:&quot;Phone&quot;,&quot;Box&quot;:[273.5326,361.2735,23.5818,6.5813]},{&quot;Text&quot;:&quot;2&quot;,&quot;Box&quot;:[764.0217,570.239,4.3794,6.5213]}],&quot;Fields&quot;:[],&quot;Tables&quot;:[]},{&quot;Page&quot;:2,&quot;Size&quot;:[0.0,0.0,612.0,792.0],&quot;SkewAngle&quot;:-0.2151,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;B.O.L.&quot;,&quot;Box&quot;:[272.6613,172.6859,23.3546,6.8357]},{&quot;Text&quot;:&quot;Ship&quot;,&quot;Box&quot;:[275.6073,62.9846,16.8884,8.0142]},{&quot;Text&quot;:&quot;Contact&quot;,&quot;Box&quot;:[273.0489,276.6059,29.5947,6.8622]},{&quot;Text&quot;:&quot;Phone&quot;,&quot;Box&quot;:[273.3666,361.8068,23.1127,6.6012]},{&quot;Text&quot;:&quot;3&quot;,&quot;Box&quot;:[764.2357,570.2026,4.157,6.7653]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;HildunGroup.AccountsPayable.Rails.Total&quot;,&quot;Box&quot;:[408.9951,525.4244,52.7415,13.9317]},{&quot;Field&quot;:&quot;HildunGroup.AccountsPayable.Rails.Balance&quot;,&quot;Box&quot;:[432.878,512.4878,65.678,14.9268]}],&quot;Tables&quot;:[]}]},{&quot;DocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE&quot;,&quot;FormId&quot;:&quot;e3a5dda4&quot;,&quot;FormName&quot;:&quot;ZanerobeSinglePage&quot;,&quot;OriginalFileExtension&quot;:&quot;pdf&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,612.0,792.0],&quot;SkewAngle&quot;:-0.6629,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;ZANEROBE&quot;,&quot;Box&quot;:[48.9835,55.9986,206.9653,47.1394]},{&quot;Text&quot;:&quot;INVOICE&quot;,&quot;Box&quot;:[132.2002,58.5356,91.5656,18.8765]},{&quot;Text&quot;:&quot;Invoice&quot;,&quot;Box&quot;:[131.4117,375.5998,27.3772,7.8461]},{&quot;Text&quot;:&quot;Date&quot;,&quot;Box&quot;:[131.9933,405.6077,18.0014,7.2686]},{&quot;Text&quot;:&quot;Item&quot;,&quot;Box&quot;:[299.3501,58.2817,16.3293,7.4821]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.ShipTo&quot;,&quot;Box&quot;:[627.922,96.5268,144.2927,40.8]}],&quot;Tables&quot;:[]}]},{&quot;DocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE&quot;,&quot;FormId&quot;:&quot;7b6f3e62&quot;,&quot;FormName&quot;:&quot;ZANEROBE_1Page&quot;,&quot;OriginalFileExtension&quot;:&quot;pdf&quot;,&quot;Pages&quot;:[{&quot;Page&quot;:0,&quot;Size&quot;:[0.0,0.0,612.0,792.0],&quot;SkewAngle&quot;:-0.4384,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;ZANEROBE&quot;,&quot;Box&quot;:[49.3105,54.6182,206.4499,46.1302]},{&quot;Text&quot;:&quot;INVOICE&quot;,&quot;Box&quot;:[134.6284,57.0183,91.3555,18.1744]},{&quot;Text&quot;:&quot;Item&quot;,&quot;Box&quot;:[301.4996,57.0941,16.4894,7.6281]},{&quot;Text&quot;:&quot;Description&quot;,&quot;Box&quot;:[301.8924,108.1887,42.4435,9.2638]},{&quot;Text&quot;:&quot;Quantity&quot;,&quot;Box&quot;:[303.3335,328.0238,32.3636,9.1898]}],&quot;Fields&quot;:[],&quot;Tables&quot;:[]},{&quot;Page&quot;:1,&quot;Size&quot;:[0.0,0.0,612.0,792.0],&quot;SkewAngle&quot;:-0.2682,&quot;Evidence&quot;:[{&quot;Text&quot;:&quot;PAYMENT&quot;,&quot;Box&quot;:[607.6576,56.2707,108.4817,17.9321]},{&quot;Text&quot;:&quot;ICE&quot;,&quot;Box&quot;:[608.1603,213.8308,42.8415,17.613]},{&quot;Text&quot;:&quot;Enter&quot;,&quot;Box&quot;:[681.9569,433.3134,18.5651,6.1214]},{&quot;Text&quot;:&quot;amount&quot;,&quot;Box&quot;:[682.3501,466.671,25.7651,6.1604]},{&quot;Text&quot;:&quot;paying&quot;,&quot;Box&quot;:[682.3745,522.3395,22.1833,7.578]},{&quot;Text&quot;:&quot;amve&quot;,&quot;Box&quot;:[682.48,546.5933,21.203,6.148]}],&quot;Fields&quot;:[{&quot;Field&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE.ShipTo&quot;,&quot;Box&quot;:[631.9024,95.5317,139.3171,46.7707]}],&quot;Tables&quot;:[]}]}]">
+                  <p5:FormExtractor.DocumentBounds>
+                    <InArgument x:TypeArguments="p4:ResultsDocumentBounds">
+                      <DelegateArgumentValue x:TypeArguments="p4:ResultsDocumentBounds">
+                        <DelegateInArgument x:TypeArguments="p4:ResultsDocumentBounds" Name="DocumentBounds" />
+                      </DelegateArgumentValue>
+                    </InArgument>
+                  </p5:FormExtractor.DocumentBounds>
+                  <p5:FormExtractor.DocumentObjectModel>
+                    <InArgument x:TypeArguments="p3:Document">
+                      <DelegateArgumentValue x:TypeArguments="p3:Document">
+                        <DelegateInArgument x:TypeArguments="p3:Document" Name="DocumentObjectModel" />
+                      </DelegateArgumentValue>
+                    </InArgument>
+                  </p5:FormExtractor.DocumentObjectModel>
+                  <p5:FormExtractor.DocumentPath>
+                    <InArgument x:TypeArguments="x:String">
+                      <DelegateArgumentValue x:TypeArguments="x:String">
+                        <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+                      </DelegateArgumentValue>
+                    </InArgument>
+                  </p5:FormExtractor.DocumentPath>
+                  <p5:FormExtractor.DocumentText>
+                    <InArgument x:TypeArguments="x:String">
+                      <DelegateArgumentValue x:TypeArguments="x:String">
+                        <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+                      </DelegateArgumentValue>
+                    </InArgument>
+                  </p5:FormExtractor.DocumentText>
+                  <p5:FormExtractor.ExtractorDocumentType>
+                    <InArgument x:TypeArguments="p7:ExtractorDocumentType">
+                      <DelegateArgumentValue x:TypeArguments="p7:ExtractorDocumentType">
+                        <DelegateInArgument x:TypeArguments="p7:ExtractorDocumentType" Name="ExtractorDocumentType" />
+                      </DelegateArgumentValue>
+                    </InArgument>
+                  </p5:FormExtractor.ExtractorDocumentType>
+                  <p5:FormExtractor.ExtractorResult>
+                    <OutArgument x:TypeArguments="p7:ExtractorResult">
+                      <DelegateArgumentReference x:TypeArguments="p7:ExtractorResult">
+                        <DelegateOutArgument x:TypeArguments="p7:ExtractorResult" Name="ExtractorResult" />
+                      </DelegateArgumentReference>
+                    </OutArgument>
+                  </p5:FormExtractor.ExtractorResult>
+                </p5:FormExtractor>
+              </p5:DataExtractionScope.Extractors>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </p5:DataExtractionScope>
+            <p5:ExportExtractionResults DataSet="[FinalRes_DataSet]" DisplayName="Export Extraction Results" ExtractionResult="[AutoExtractionResults]" sap:VirtualizedContainerService.HintSize="608.8,176.8" sap2010:WorkflowViewState.IdRef="ExportExtractionResults_1" IncludeConfidence="True">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </p5:ExportExtractionResults>
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CreateInvoiceCopy workflow" sap:VirtualizedContainerService.HintSize="608.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Components\CreateInvoiceCopy.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="invoiceNum">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Cstr(IIF(IsNothing(FinalRes_DataSet.Tables(0).Rows(0).Item(&quot;Invoice Number&quot;)),CStr(Res.DocumentBounds.StartPage +1),FinalRes_DataSet.Tables(0).Rows(0).Item(&quot;Invoice Number&quot;).tostring))" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="CustName">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="FinalRes_DataSet.Tables(0).Rows(0).Item(&quot;Ship to&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="PageNum">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CStr(Res.DocumentBounds.StartPage +1) &amp; CStr(IIf(Res.DocumentBounds.pageCount = 1,&quot;&quot;,&quot;-&quot;&amp; CStr(Res.DocumentBounds.StartPage + Res.DocumentBounds.pageCount ) ))" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="BaseFolder">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;Output_FolderPath&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="MainPDF">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="FilePath" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Index">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CStr(Res.DocumentBounds.StartPage +1)" />
+                </InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <If Condition="[Started]" sap:VirtualizedContainerService.HintSize="608.8,402.4" sap2010:WorkflowViewState.IdRef="If_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <ui:MergeDataTable Destination="[HostDataTable]" DisplayName="Merge Data Table" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="MergeDataTable_1" MissingSchemaAction="Add" Source="[FinalRes_DataSet.Tables(0)]" />
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="304,252.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="sd1:DataTable">[HostDataTable]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="sd1:DataTable">[FinalRes_DataSet.Tables(0)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[Started]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:WriteRange AddHeaders="True" DataTable="[HostDataTable]" DisplayName="Write Range &lt;Extracted Invoice Data&gt;" sap:VirtualizedContainerService.HintSize="608.8,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[in_config(&quot;ExcelOutput_File_SheetName&quot;).ToString]" StartingCell="A1" WorkbookPath="[in_config(&quot;ExcelOutput_FilePath&quot;).ToString]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="608.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[FilePath + &quot; &quot; + &quot;Processed Successfully.&quot;]" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
+  </Sequence>
+</Activity>

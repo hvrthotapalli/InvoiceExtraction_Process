@@ -1,0 +1,59 @@
+{
+  "name": "InvoiceData_Extraction_Process_REF",
+  "description": "Reading invoic PDF files and extracting key information from each individual PDF's and stored them in an excel/queue for data processing using Robotic Enterprise Framework.",
+  "main": "Main.xaml",
+  "dependencies": {
+    "UiPath.DocumentProcessing.Contracts": "[1.9.1]",
+    "UiPath.DocumentUnderstanding.ML.Activities": "[1.5.2]",
+    "UiPath.Excel.Activities": "[2.9.5]",
+    "UiPath.IntelligentOCR.Activities": "[4.10.4]",
+    "UiPath.Mail.Activities": "[1.9.5]",
+    "UiPath.OmniPage.Activities": "[1.7.0]",
+    "UiPath.PDF.Activities": "[3.3.0]",
+    "UiPath.System.Activities": "[20.10.4]",
+    "UiPath.UIAutomation.Activities": "[20.10.9]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "20.10.6.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "isPausable": true,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "ab2e69c0-8cf3-422e-9297-2b7c2a4a12a2",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {}
+}
