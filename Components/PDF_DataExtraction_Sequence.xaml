@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1410.4,2744</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>752,3403.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>PDF_DataExtraction_Sequence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="94">
@@ -102,7 +102,7 @@
       <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="PDF_DataExtraction_Sequence" sap:VirtualizedContainerService.HintSize="727.2,2539.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="PDF_DataExtraction_Sequence" sap:VirtualizedContainerService.HintSize="727.2,3238.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="p8:DocumentTaxonomy" Name="Taxonomy" />
       <Variable x:TypeArguments="x:String" Name="FilePath" />
@@ -129,7 +129,7 @@
     </Assign>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="685.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Processing - &quot; + FilePath]" />
     <p:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="685.6,105.6" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[Taxonomy]" />
-    <p:DigitizeDocument DegreeOfParallelism="-1" DisplayName="Digitize Document" DocumentObjectModel="[DOM]" DocumentPath="[FilePath]" DocumentText="[DOC_Text]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="685.6,68.8" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
+    <p:DigitizeDocument DegreeOfParallelism="-1" DisplayName="Digitize Document" DocumentObjectModel="[DOM]" DocumentPath="[FilePath]" DocumentText="[DOC_Text]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="685.6,297.6" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
       <p:DigitizeDocument.OCREngine>
         <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
           <ActivityFunc.Argument>
@@ -140,12 +140,12 @@
       </p:DigitizeDocument.OCREngine>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </p:DigitizeDocument>
-    <p1:ClassifyDocumentScope ClassificationResults="[ClassificationResults]" DisplayName="Classify Document Scope" DocumentObjectModel="[DOM]" DocumentPath="[FilePath]" DocumentText="[DOC_Text]" sap:VirtualizedContainerService.HintSize="685.6,68.8" sap2010:WorkflowViewState.IdRef="ClassifyDocumentScope_1" Taxonomy="[Taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UI4bfc5c32d9c444399c73717c0d91359a&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;HildunGroup.AccountsPayable.Invoice&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Invoice&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceTasha&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;HildunGroup.AccountsPayable.Seafolly&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;HildunGroup.AccountsPayable.Rails&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Rails&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZAC01&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true}}},&quot;UIc6c64f0d292c4b7a8c68a7939308cc53&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;HildunGroup.AccountsPayable.Invoice&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Invoice&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceTasha&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:false},&quot;HildunGroup.AccountsPayable.Seafolly&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:false},&quot;HildunGroup.AccountsPayable.Rails&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Rails&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZAC01&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:false}}}},&quot;ClassifierMinimumConfidence&quot;:{&quot;UI4bfc5c32d9c444399c73717c0d91359a&quot;:&quot;0&quot;,&quot;UIc6c64f0d292c4b7a8c68a7939308cc53&quot;:&quot;0&quot;},&quot;DocumentTypesByPersistenceId&quot;:{}}">
+    <p1:ClassifyDocumentScope ClassificationResults="[ClassificationResults]" DisplayName="Classify Document Scope" DocumentObjectModel="[DOM]" DocumentPath="[FilePath]" DocumentText="[DOC_Text]" sap:VirtualizedContainerService.HintSize="685.6,539.2" sap2010:WorkflowViewState.IdRef="ClassifyDocumentScope_1" Taxonomy="[Taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UI4bfc5c32d9c444399c73717c0d91359a&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;HildunGroup.AccountsPayable.Invoice&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Invoice&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceTasha&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;HildunGroup.AccountsPayable.Seafolly&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;HildunGroup.AccountsPayable.Rails&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Rails&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZAC01&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true}}},&quot;UIc6c64f0d292c4b7a8c68a7939308cc53&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;HildunGroup.AccountsPayable.Invoice&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Invoice&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceTasha&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceTasha&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:false},&quot;HildunGroup.AccountsPayable.Seafolly&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Seafolly&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:false},&quot;HildunGroup.AccountsPayable.Rails&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.Rails&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZAC01&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZAC01&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:false},&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;HildunGroup.AccountsPayable.InvoiceZANEROBE&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:false}}}},&quot;ClassifierMinimumConfidence&quot;:{&quot;UI4bfc5c32d9c444399c73717c0d91359a&quot;:&quot;0&quot;,&quot;UIc6c64f0d292c4b7a8c68a7939308cc53&quot;:&quot;0&quot;},&quot;DocumentTypesByPersistenceId&quot;:{}}">
       <p1:ClassifyDocumentScope.Classifiers>
         <p1:IntelligentKeywordClassifier LearningData="{x:Null}" ApiKey="[in_config(&quot;IKC_APIKey&quot;).ToString]" DisplayName="Intelligent Keyword Classifier" Endpoint="[in_config(&quot;IKC_EndPoint&quot;).ToString]" sap:VirtualizedContainerService.HintSize="233.6,212.8" sap2010:WorkflowViewState.IdRef="IntelligentKeywordClassifier_1" LearningFilePath="[in_config(&quot;IKC_FilePath&quot;).ToString]" PersistenceId="UI4bfc5c32d9c444399c73717c0d91359a">
           <p1:IntelligentKeywordClassifier.ClassifierResult>
@@ -224,7 +224,7 @@
       </p1:ClassifyDocumentScope.Classifiers>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -352,24 +352,12 @@
             </p5:ExportExtractionResults>
             <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CreateInvoiceCopy workflow" sap:VirtualizedContainerService.HintSize="608.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Components\CreateInvoiceCopy.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="invoiceNum">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Cstr(IIF(IsNothing(FinalRes_DataSet.Tables(0).Rows(0).Item(&quot;Invoice Number&quot;)),CStr(Res.DocumentBounds.StartPage +1),FinalRes_DataSet.Tables(0).Rows(0).Item(&quot;Invoice Number&quot;).tostring))" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="CustName">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="FinalRes_DataSet.Tables(0).Rows(0).Item(&quot;Ship to&quot;).ToString" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="PageNum">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CStr(Res.DocumentBounds.StartPage +1) &amp; CStr(IIf(Res.DocumentBounds.pageCount = 1,&quot;&quot;,&quot;-&quot;&amp; CStr(Res.DocumentBounds.StartPage + Res.DocumentBounds.pageCount ) ))" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="BaseFolder">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_config(&quot;Output_FolderPath&quot;).ToString" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="MainPDF">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="FilePath" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="Index">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CStr(Res.DocumentBounds.StartPage +1)" />
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="invoiceNum">[Cstr(IIF(IsNothing(FinalRes_DataSet.Tables(0).Rows(0).Item("Invoice Number")),CStr(Res.DocumentBounds.StartPage +1),FinalRes_DataSet.Tables(0).Rows(0).Item("Invoice Number").tostring))]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="CustName">[FinalRes_DataSet.Tables(0).Rows(0).Item("Ship to").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="PageNum">[CStr(Res.DocumentBounds.StartPage +1) &amp; CStr(IIf(Res.DocumentBounds.pageCount = 1,"","-"&amp; CStr(Res.DocumentBounds.StartPage + Res.DocumentBounds.pageCount ) ))]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="BaseFolder">[in_config("Output_FolderPath").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="MainPDF">[FilePath]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Index">[CStr(Res.DocumentBounds.StartPage +1)]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <If Condition="[Started]" sap:VirtualizedContainerService.HintSize="608.8,402.4" sap2010:WorkflowViewState.IdRef="If_1">
@@ -408,7 +396,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <ui:WriteRange AddHeaders="True" DataTable="[HostDataTable]" DisplayName="Write Range &lt;Extracted Invoice Data&gt;" sap:VirtualizedContainerService.HintSize="608.8,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[in_config(&quot;ExcelOutput_File_SheetName&quot;).ToString]" StartingCell="A1" WorkbookPath="[in_config(&quot;ExcelOutput_FilePath&quot;).ToString]" />
+            <ui:WriteRange AddHeaders="True" DataTable="[HostDataTable]" DisplayName="Write Range &lt;Extracted Invoice Data&gt;" sap:VirtualizedContainerService.HintSize="608.8,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[FilePath.ToString.Replace(&quot;\&quot;,&quot;_&quot;).Replace(&quot;/&quot;,&quot;_&quot;).Replace(&quot;?&quot;,&quot;_&quot;).Replace(&quot;*&quot;,&quot;_&quot;).Replace(&quot;[&quot;,&quot;_&quot;).Replace(&quot;]&quot;,&quot;_&quot;).Replace(&quot;.&quot;,&quot;_&quot;)]" StartingCell="A1" WorkbookPath="[in_config(&quot;ExcelOutput_FilePath&quot;).ToString]" />
             <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="608.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[FilePath + &quot; &quot; + &quot;Processed Successfully.&quot;]" />
           </Sequence>
         </ActivityAction>
